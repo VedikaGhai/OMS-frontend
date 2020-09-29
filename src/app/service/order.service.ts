@@ -6,14 +6,14 @@ export class Order{
   constructor(
     public userid:string,
     public id:string,
-    public time:Date,
-    public type:string,
-    public buy_or_sell:string,
+    public orderTime:Date,
+    public orderType:string,
+    public buyOrSell:string,
     public quantity:string,
     public price:string,
-    public all_or_none:number,
-    public min_fill:string,
-    public status:string
+    public allOrNone:string,
+    public minFill:string,
+    public orderStatus:string
   ) {}
 }
 

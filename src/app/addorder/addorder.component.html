@@ -69,7 +69,7 @@
                     <div [hidden] = "checkminbuy()">
                       <mat-form-field>
                         <mat-label>Minimum shares to be filled</mat-label>
-                        <input  matInput  pattern="[0-9]+" placeholder="Min Fill" [(ngModel)]="order.min_fill"  name="minfill" #minfillref = "ngModel" >
+                        <input  matInput  pattern="[0-9]+" placeholder="Min Fill" [(ngModel)]="order.minFill"  name="minfill" #minfillref = "ngModel" >
                       </mat-form-field>
                     </div>
                     <div [hidden]="minfillref.pristine || minfillref.valid" class="alert alert-danger">
@@ -167,7 +167,7 @@
                     <div [hidden] = "checkminsell()">
                       <mat-form-field>
                         <mat-label>Minimum shares to be filled</mat-label>
-                        <input matInput  pattern="[0-9]+" placeholder="Min Fill" [(ngModel)]="order.min_fill"  name="minfill" #minfillref = "ngModel" >
+                        <input matInput  pattern="[0-9]+" placeholder="Min Fill" [(ngModel)]="order.minFill"  name="minfill" #minfillref = "ngModel" >
                       </mat-form-field>
                     </div>
                     <div [hidden]="minfillref.pristine || minfillref.valid" class="alert alert-danger">

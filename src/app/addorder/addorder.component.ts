@@ -17,7 +17,7 @@ import { MinFillErrorComponent } from '../min-fill-error/min-fill-error.componen
   styleUrls: ['./addorder.component.css']
 })
 export class AddorderComponent implements OnInit {
-  order:Order = new Order("","",new Date(),"","","","",0,"","");
+  order:Order = new Order("","",new Date(),"","","","","0","","");
   orders : Order[];
   
   pbuy = false;
@@ -129,17 +129,17 @@ export class AddorderComponent implements OnInit {
           return;
         }
         if(this.selloption == "All or None"){
-          this.order.all_or_none = 1;
-          this.order.min_fill = "0";
+          this.order.allOrNone = "1";
+          this.order.minFill = "0";
         }
         else if(this.selloption == "None"){
-          this.order.min_fill = "0";
+          this.order.minFill = "0";
         }
-        this.order.buy_or_sell = "SELL";
+        this.order.buyOrSell = "SELL";
         if(!this.psell)
-        this.order.type = "LIMIT";
+        this.order.orderType = "LIMIT";
         else
-        this.order.type = "MARKET";
+        this.order.orderType = "MARKET";
       }
       else{
         console.log("this is a BUY order");
@@ -154,24 +154,24 @@ export class AddorderComponent implements OnInit {
 
           return;
         }
-
+        console.log(this.buyoption);
         if(this.buyoption == "All or None"){
-          this.order.all_or_none = 1;
-          this.order.min_fill = "0";
+          this.order.allOrNone = "1";
+          this.order.minFill = "0";
         }
         else if(this.buyoption == "None"){    
-           this.order.min_fill = "0";
+           this.order.minFill = "0";
         }
-        this.order.buy_or_sell = "BUY";
+        this.order.buyOrSell = "BUY";
         if(!this.pbuy)
-        this.order.type = "LIMIT";
+        this.order.orderType = "LIMIT";
         else
-        this.order.type = "MARKET";
+        this.order.orderType = "MARKET";
       }
       //MARKET-LIMIT VALIDATION-END
       
       //MIN-FILL VALIDATION-START
-      if((parseInt(this.order.min_fill) > 0) && (parseInt(this.order.min_fill) > parseInt(this.order.quantity))){
+      if((parseInt(this.order.minFill) > 0) && (parseInt(this.order.minFill) > parseInt(this.order.quantity))){
         let dialogRef = this.dialog.open(MinFillErrorComponent, {
           width: '250px',
         });
@@ -184,8 +184,8 @@ export class AddorderComponent implements OnInit {
       }
       //MIN-FILL VALIDATION-END
 
-      this.order.status = "PENDING";
-      this.order.time = new Date();
+      this.order.orderStatus = "PENDING";
+      this.order.orderTime = new Date();
       this.order.userid = "user1";
       
       console.log(this.order);
@@ -206,17 +206,14 @@ export class AddorderComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderservice.getOrders().subscribe(data => {this.orders = data;
-      console.log("before for");
       for(let i = 0;i<this.orders.length;i++){
-        console.log("in for");
-        if(this.orders[i].buy_or_sell == "SELL" && this.orders[i].type == "LIMIT")
+        if(this.orders[i].buyOrSell == "SELL" && this.orders[i].orderType == "LIMIT")
           this.isbuyavailable = true;
-        if(this.orders[i].buy_or_sell == "BUY" && this.orders[i].type == "LIMIT")
+        if(this.orders[i].buyOrSell == "BUY" && this.orders[i].orderType == "LIMIT")
           this.issellavailable = true;
         if(this.isbuyavailable && this.issellavailable)
         break;
       }
-      console.log("after for isbuy : " + this.isbuyavailable + " issell " + this.issellavailable);
     });
     //console.log(typeof(this.orders));
     //this.orders.forEach(data => console.log("allo sir"));
