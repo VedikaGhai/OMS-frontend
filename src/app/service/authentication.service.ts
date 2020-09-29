@@ -1,11 +1,24 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+
+export class User{
+  public user_id: number;
+  public username: string;
+  public email_id: string;
+  public pass_word: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+
+  authenticateUser(user: User){
+    
+    return this.httpClient.post<User>("http://localhost:8080/authenticate", user);
+  }
 
   isUserLoggedIn() {
     let user = sessionStorage.getItem('authenticationStatus')

@@ -13,7 +13,7 @@
                   <br><br>
                   <mat-form-field>
                     <!--<input matInput placeholder="Enter your email" [formControl]="emailLogin" required>-->
-                    <input matInput placeholder="Enter your email"  required>
+                    <input matInput placeholder="Enter your email"  required [(ngModel)]="username">
                     
                     <!-- If email is not according to the valid format -->
                     <mat-error *ngIf="emailLogin.invalid">{{getErrorMessage()}}</mat-error>             
@@ -23,7 +23,7 @@
                 
                     <mat-form-field>
                     <!--<input matInput placeholder="Enter your Password" [formControl]="passwordLogin" required type="password">-->
-                    <input matInput placeholder="Enter your Password" required type="password">
+                    <input matInput placeholder="Enter your Password" required type="password" [(ngModel)]="password">
                     <mat-error *ngIf="passwordLogin.invalid">{{getErrorMessage()}}</mat-error>
                   </mat-form-field><br><br>
                   <!--<mat-checkbox>Remember Me</mat-checkbox>-->
@@ -77,7 +77,7 @@
                           <input matInput placeholder="Enter your Passsword" required>
                           <mat-error *ngIf="passwordSignUp.invalid">{{getErrorMessage()}}</mat-error>
                         </mat-form-field><br><br>
-                        <button mat-raised-button color="primary" (click) = "createUser(UserForm)" > SIGNUP </button>
+                        <button mat-raised-button color="primary" (click) = "createUser()" > SIGNUP </button>
                         </form>
                         
                       
