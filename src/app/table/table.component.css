@@ -1,0 +1,10 @@
+table {
+    width: 40%;
+    margin: 10px;
+  }
+  
+.mat-paginator {
+    position: absolute;
+    text-align: center;
+    margin: 10px;
+  }

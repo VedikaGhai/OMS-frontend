@@ -1,0 +1,98 @@
+<div class="background">
+    <br><br>
+      <div class="example-container" >
+        <mat-card class="custom">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            
+          </mat-card-header>
+            <mat-tab-group>
+                <mat-tab label="Login">
+                  <!-- LOGIN -->
+      
+                  <br><br>
+                  <mat-form-field>
+                    <!--<input matInput placeholder="Enter your email" [formControl]="emailLogin" required>-->
+                    <input matInput placeholder="Enter your email"  required>
+                    
+                    <!-- If email is not according to the valid format -->
+                    <mat-error *ngIf="emailLogin.invalid">{{getErrorMessage()}}</mat-error>             
+                  </mat-form-field>
+                
+                <br><br>
+                
+                    <mat-form-field>
+                    <!--<input matInput placeholder="Enter your Password" [formControl]="passwordLogin" required type="password">-->
+                    <input matInput placeholder="Enter your Password" required type="password">
+                    <mat-error *ngIf="passwordLogin.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field><br><br>
+                  <!--<mat-checkbox>Remember Me</mat-checkbox>-->
+                
+                   <a mat-flat-button routerLink="." style="color: mediumblue">Forgot password?</a> 
+                  
+                  <br><br>
+                
+                <!--We can use below syntax for if else-->
+                
+                <div *ngIf="!checkUser(); then ifblock; else elseblock">
+                </div> 
+      
+                <!-- This can be substituted to ng-template-->
+                <!-- <button mat-raised-button color="primary" [disabled]="flag" (click)="checkUser()">Upload</button>
+                 -->
+                <ng-template #ifblock>
+      
+                <!-- INVALID USER -->
+                <button mat-raised-button color="primary" (click) = "checkUser()" disabled> LOGIN  </button>
+                <mat-error *ngIf="flag"><br>
+                   Enter valid email and password to login
+                  </mat-error>
+                </ng-template>
+                
+                
+                <ng-template #elseblock>
+                    <button mat-raised-button color="primary" (click) = "loginUser()"> LOGIN </button>
+                </ng-template>
+                </mat-tab>
+                  <!-- END OF LOGIN -->
+                  
+      
+                <mat-tab label="SignUp">
+                  <!-- SIGN UP -->
+                    
+                        <br><br>
+                      <form #UserForm="ngForm" novalidate>
+                        <mat-form-field>
+                         <!-- <input matInput placeholder="Enter your UserName" [formControl]="userNameSignUp" required>-->
+                          <input matInput placeholder="Enter your UserName" required>
+                          <mat-error *ngIf="userNameSignUp.invalid">{{getErrorMessage()}}</mat-error>
+                          </mat-form-field>
+                          <mat-form-field>
+                           <!-- <input matInput placeholder="Enter your Email" [formControl]="emailSignUp" required>-->
+                            <input matInput placeholder="Enter your Email" required>
+                            <mat-error *ngIf="emailSignUp.invalid">{{getErrorMessage()}}</mat-error>
+                          </mat-form-field>
+                        <mat-form-field>
+                          <!--<input matInput placeholder="Enter your Passsword" [formControl]="passwordSignUp" required>-->
+                          <input matInput placeholder="Enter your Passsword" required>
+                          <mat-error *ngIf="passwordSignUp.invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field><br><br>
+                        <button mat-raised-button color="primary" (click) = "createUser(UserForm)" > SIGNUP </button>
+                        </form>
+                        
+                      
+                    
+                </mat-tab>
+                <!-- END OF SIGN UP -->
+                
+            </mat-tab-group>
+              <br><br>
+      
+      
+        </mat-card>
+        
+      </div>
+        
+    </div>
+
+    
