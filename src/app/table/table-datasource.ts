@@ -96,6 +96,4 @@ export class TableDataSource extends DataSource<TableItem> {
 
 function compare(a: string | number, b: string | number, isAsc: boolean) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-
 }
-

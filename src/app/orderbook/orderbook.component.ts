@@ -19,5 +19,4 @@ export class OrderbookComponent implements OnInit {
   onClickMe() {
     this.parentMessage = true;
   }
-
 }
