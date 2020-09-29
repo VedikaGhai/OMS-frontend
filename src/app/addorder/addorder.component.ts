@@ -39,6 +39,8 @@ export class AddorderComponent implements OnInit {
   isbuyavailable = false;
   issellavailable = false;
 
+  f = 0;
+
 
   //rateControl = new FormControl("", [Validators.max(parseInt(this.order.quantity)), Validators.min(0)])
   //val = 0;
@@ -91,35 +93,21 @@ export class AddorderComponent implements OnInit {
   validate(myform):void{
     let val = this.order.price;
     let len = val.length;
-    //price-validation-start
+    
+    //PRICE VALIDATION START
     if(len >= 3 && val[len-3] == '.' && val[len-1] != '5' && val[len-1] != '0'){
-      console.log(val);
-
-      let dialogRef = this.dialog.open(PriceErrorComponent, {
-        width: '250px',
-      });
-
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-      });
-
+      this.f = 1;
     }
     else if(parseFloat(val) < this.minlimit || parseFloat(val) > this.maxlimit){
-      //console.log("allo");
-      let dialogRef = this.dialog.open(PriceErrorComponent, {
-        width: '250px',
-      });
-
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-      });
+      this.f = 1;
     }
-    //price-validation-end
-    else{
+    //PRICE-VALIDATION-END
+
+    
       //MARKET-LIMIT VALIDATION
       if(this.slidervalue){
         console.log("this is a SELL order");
-        if(this.psell && !this.issellavailable){
+        /*if(this.psell && !this.issellavailable){
           let dialogRef = this.dialog.open(MarketSellErrorComponent, {
             width: '250px',
           });
@@ -128,7 +116,7 @@ export class AddorderComponent implements OnInit {
             console.log('The dialog was closed');
           });
           return;
-        }
+        }*/
         if(this.selloption == "All or None"){
           this.order.allOrNone = "1";
           this.order.minFill = "0";
@@ -144,6 +132,7 @@ export class AddorderComponent implements OnInit {
       }
       else{
         console.log("this is a BUY order");
+        /*
         if(this.pbuy && !this.isbuyavailable){
           let dialogRef = this.dialog.open(MarketBuyErrorComponent, {
             width: '250px',
@@ -155,7 +144,8 @@ export class AddorderComponent implements OnInit {
 
           return;
         }
-        console.log(this.buyoption);
+        */
+        
         if(this.buyoption == "All or None"){
           this.order.allOrNone = "1";
           this.order.minFill = "0";
@@ -185,15 +175,32 @@ export class AddorderComponent implements OnInit {
       }
       //MIN-FILL VALIDATION-END
 
+      if(this.f){
+        this.order.orderStatus = "REJECTED";
+        let dialogRef = this.dialog.open(PriceErrorComponent, {
+          width: '250px',
+        });
+  
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+        });
+      }
+      else
       this.order.orderStatus = "PENDING";
       //this.order.orderTime = this.currtime;
-      console.log((<HTMLInputElement>document.getElementById("time2")).value)
+      //console.log((<HTMLInputElement>document.getElementById("time2")).value)
       
       this.order.userid = "user1";
       
       console.log(this.order);
       this.orderservice.addOrder(this.order)
       .subscribe(data => {
+
+        if(this.f){
+          this.f = 0;
+          return;
+        }
+
         let dialogRef = this.dialog.open(SubmissionComponent, {
           width: '250px',
         });
@@ -204,7 +211,7 @@ export class AddorderComponent implements OnInit {
       });
       //myform.reset();
       //window.location.reload();
-  }
+  
 }
 
   ngOnInit(): void {
