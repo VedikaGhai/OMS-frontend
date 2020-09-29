@@ -39,6 +39,7 @@ export class AddorderComponent implements OnInit {
   isbuyavailable = false;
   issellavailable = false;
 
+
   //rateControl = new FormControl("", [Validators.max(parseInt(this.order.quantity)), Validators.min(0)])
   //val = 0;
 
@@ -185,7 +186,9 @@ export class AddorderComponent implements OnInit {
       //MIN-FILL VALIDATION-END
 
       this.order.orderStatus = "PENDING";
-      this.order.orderTime = new Date();
+      //this.order.orderTime = this.currtime;
+      console.log((<HTMLInputElement>document.getElementById("time2")).value)
+      
       this.order.userid = "user1";
       
       console.log(this.order);
@@ -205,6 +208,10 @@ export class AddorderComponent implements OnInit {
 }
 
   ngOnInit(): void {
+
+    //(<HTMLInputElement>document.getElementById("myTime")).required = true;
+    //(<HTMLInputElement>document.getElementById("myTime")).min = "10:00:00";
+
     this.orderservice.getOrders().subscribe(data => {this.orders = data;
       for(let i = 0;i<this.orders.length;i++){
         if(this.orders[i].buyOrSell == "SELL" && this.orders[i].orderType == "LIMIT")

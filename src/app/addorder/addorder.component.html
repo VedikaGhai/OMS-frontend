@@ -14,7 +14,7 @@
       </mat-card-header>
           <mat-card-content>
             <form (ngSubmit) = "validate(buyorderform)" #buyorderform = "ngForm" class="my-form">
-              <table style="width: 90%"  cellspacing="10">
+              <table style="width: 100%"  cellspacing="30">
                 <tr>
                     <td> 
                       <mat-form-field>
@@ -40,11 +40,12 @@
                       <mat-label>Quantity</mat-label>
                       <input  matInput  pattern="[0-9]+" placeholder="Quantity" [(ngModel)]="order.quantity"  name="quantity"  required #quantityref = "ngModel">
                     </mat-form-field>
-                    <fa-icon [icon]="quantityinfo" data-toggle="tooltip" title="Should be a numeric value."></fa-icon>
+                    <fa-icon [icon]="quantityinfo" data-toggle="tooltip" title="Should be a numeric value."></fa-icon>       
                     <div [hidden]="quantityref.pristine || quantityref.valid" class="alert alert-danger">
                       Please enter some Valid Quantity for your order!
                     </div>   
                   </td>
+
                 </tr>
                 <tr>
                   <td>
@@ -58,12 +59,12 @@
                       </mat-select>
                   </mat-form-field>
                   </td>
+
                   <td>
-                    <mat-label>BUY  </mat-label>
-                    <mat-slide-toggle [(ngModel)] = "slidervalue" name = "OrderType" (click) = "buytoggle()"></mat-slide-toggle> 
-                    <mat-label>  SELL</mat-label>
                   </td>
+
                 </tr>
+            
                 <tr>
                   <td>
                     <div [hidden] = "checkminbuy()">
@@ -77,15 +78,20 @@
                     </div>   
                   </td>
                 </tr>
-                <!--<tr *ngFor = "let order of orders">
-                    <td>{{order.price}}</td>
-                </tr>-->
+
                 <tr>
                   <td>
                     <button  mat-raised-button color="primary" [disabled] = "!buyorderform.form.valid">Confirm Order</button>
                   </td>
+
+                  <td>
+                    <mat-label>BUY  </mat-label>
+                    <mat-slide-toggle [(ngModel)] = "slidervalue" name = "OrderType" (click) = "buytoggle()"></mat-slide-toggle> 
+                    <mat-label>  SELL</mat-label>
+                  </td>
                 </tr>
                 </table>
+                
             </form>
           </mat-card-content>
           <mat-card-actions>
@@ -95,6 +101,8 @@
     <!-- Material form contact -->
     </div>
     
+    
+
     <div *ngIf = "slidervalue" style="width : 800px; margin: auto; ">
     <mat-card  class="my-card sell">
       <mat-card-header>
