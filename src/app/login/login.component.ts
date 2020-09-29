@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators, NgForm} from '@angular/forms';
 import { Router } from '@angular/router';
+import { from } from 'rxjs';
+import { AuthenticationService, User } from '../service/authentication.service';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginErrorComponent } from '../login-error/login-error.component';
 
 @Component({
   selector: 'app-login',
@@ -17,14 +21,19 @@ export class LoginComponent implements OnInit {
   userNameSignUp = new FormControl('',[Validators.required,Validators.required]);
 
   emailId:string;
-
+  username: string;
+  password:string;
   status:string;
   flag:boolean = false;
 
   users = {};
 
+  user: User= new User();
 
-  constructor(private router: Router
+
+  constructor(private router: Router,
+    private authentication: AuthenticationService,
+    public dialog: MatDialog
     ) { }
 
   ngOnInit() {
@@ -60,10 +69,32 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(){
-    if(this.checkUser){
+    this.user.username = this.username;
+    this.user.pass_word = this.password;
+    console.log(this.user);
+    
+    this.authentication.authenticateUser(this.user).subscribe(res => {
+      console.log(res)
+      if((this.checkUser) && res!=null){
+        sessionStorage.setItem('authenticationStatus', 'valid');
+        this.router.navigate(['orderbook']);
+      }
+      else{
+        let dialogRef = this.dialog.open(LoginErrorComponent, {
+          width: '250px',
+        });
+  
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+        });
+      }
+    
+    });
+    /*
+    if((this.checkUser) && (this.authentication.authenticateUser(this.user)!=null)){
       sessionStorage.setItem('authenticationStatus', 'valid');
-      this.router.navigate(['orderbook']);
-    }
+      this.router.navigate(['orderbook']);}*/
+    
   }
 
 
@@ -85,8 +116,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  createUser(form){
-    console.log("allo");
+  createUser(){
+    
   }
 
 }

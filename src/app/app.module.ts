@@ -32,14 +32,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 //new
 import { AddorderComponent } from './addorder/addorder.component';
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker/src/app/material-timepicker/ngx-material-timepicker.module';
-import { OwlDateTimeModule } from 'ng-pick-datetime/date-time/date-time.module';
-import { OwlNativeDateTimeModule } from 'ng-pick-datetime/date-time/adapter/native-date-time.module';
-import {
-  NgxMatDatetimePickerModule, 
-  NgxMatNativeDateModule, 
-  NgxMatTimepickerModule 
-} from '@angular-material-components/datetime-picker';
+import { LoginErrorComponent } from './login-error/login-error.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +45,7 @@ import {
     LogoutComponent,
     TableComponent,
     AddorderComponent,
-
+    LoginErrorComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
@@ -78,9 +71,6 @@ import {
     MatSortModule,
     MatPaginatorModule,
     MyMaterialModule,
-    NgxMatDatetimePickerModule, 
-    NgxMatNativeDateModule, 
-    NgxMatTimepickerModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
