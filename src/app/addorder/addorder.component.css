@@ -1,0 +1,20 @@
+.tp-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+ }
+
+ .buy{
+    background-color: orange;
+ }
+
+ .sell{
+    background-color:  lightskyblue;
+ }
+
+ .container {
+   display: flex;
+ }
+ 
+ .fill {
+   flex: 1;
+ }

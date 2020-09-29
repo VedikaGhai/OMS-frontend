@@ -8,10 +8,11 @@ export class Order{
     public id:string,
     public time:Date,
     public type:string,
-    public category:string,
+    public buy_or_sell:string,
     public quantity:string,
     public price:string,
-    public extra:string,
+    public all_or_none:number,
+    public min_fill:string,
     public status:string
   ) {}
 }

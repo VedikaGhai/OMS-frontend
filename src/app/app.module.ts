@@ -28,6 +28,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+
+
+//new
+import { AddorderComponent } from './addorder/addorder.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +43,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     LoginComponent,
     LogoutComponent,
     TableComponent,
+    AddorderComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

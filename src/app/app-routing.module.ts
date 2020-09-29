@@ -7,13 +7,15 @@ import { TradesComponent } from './trades/trades.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGaurdService } from './service/auth-gaurd.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AddorderComponent } from './addorder/addorder.component';
 
 const routes: Routes = [
   {path: 'orderbook', component: OrderbookComponent, canActivate:[AuthGaurdService]},
   {path: 'addorders', component: AddordersComponent, canActivate:[AuthGaurdService]},
   {path: 'trades', component: TradesComponent, canActivate:[AuthGaurdService]},
   { path: 'login', component: LoginComponent},
-  { path: 'logout', component: LogoutComponent, canActivate:[AuthGaurdService]}
+  { path: 'logout', component: LogoutComponent, canActivate:[AuthGaurdService]},
+  { path: 'addorder', component: AddorderComponent, canActivate:[AuthGaurdService]}
 ];
 
 @NgModule({
