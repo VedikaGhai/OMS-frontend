@@ -63,6 +63,13 @@
                       </mat-select>
                   </mat-form-field>
                   </td>
+
+                  <td>
+                    <mat-form-field>
+                      <input matInput type="time" placeholder="Time of order" id="time" step = "1" value="curr">
+                      <!--<input type="time" id="time2" step = "1"/>-->
+                    </mat-form-field> 
+                  </td>
                 </tr>
             
                 <tr>
@@ -94,7 +101,7 @@
                 </table>
             </form>
           </mat-card-content>
-          
+
     </mat-card>
     <!-- Material form contact -->
     </div>
@@ -116,7 +123,7 @@
       
           <mat-card-content>
             <form  (ngSubmit) = "validate(sellorderform)" #sellorderform = "ngForm" class="my-form">
-              <table  style="width: 90%"  cellspacing="10">
+              <table  style="width: 100%"  cellspacing="30">
                 <tr>
                     <td> 
                       <mat-form-field>
@@ -161,12 +168,17 @@
                           <mat-option value="Disclosed Quantity">Disclosed Quantity</mat-option>
                       </mat-select>
                   </mat-form-field>
-                  </td>
+                 </td>
+
                   <td>
-                    <mat-label>BUY  </mat-label>
-                    <mat-slide-toggle [(ngModel)] = "slidervalue" name = "OrderType" (click) = "selltoggle()"></mat-slide-toggle> 
-                    <mat-label>  SELL</mat-label>
+                    <mat-form-field>
+                      <input matInput type="time" placeholder="Time of order" id="time" step = "1" value="curr">
+                      <!--<input type="time" id="time2" step = "1"/>-->
+                    </mat-form-field> 
                   </td>
+
+                  
+                  
                 </tr>
                 <tr>
                   <td>
@@ -184,6 +196,12 @@
                 <tr>
                   <td>
                     <button  [disabled] = "!sellorderform.form.valid" mat-raised-button color="primary">Confirm Order</button>
+                  </td>
+
+                  <td>
+                    <mat-label>BUY  </mat-label>
+                    <mat-slide-toggle [(ngModel)] = "slidervalue" name = "OrderType" (click) = "selltoggle()"></mat-slide-toggle> 
+                    <mat-label>  SELL</mat-label>
                   </td>
                 </tr>
                 </table>

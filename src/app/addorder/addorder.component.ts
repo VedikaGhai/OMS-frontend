@@ -35,10 +35,9 @@ export class AddorderComponent implements OnInit {
   ltpinfo = faInfoCircle;
   priceinfo = faInfoCircle;
   quantityinfo = faInfoCircle;
-  
   isbuyavailable = false;
   issellavailable = false;
-
+  
   f = 0;
 
 
@@ -187,8 +186,14 @@ export class AddorderComponent implements OnInit {
       }
       else
       this.order.orderStatus = "PENDING";
-      //this.order.orderTime = this.currtime;
-      //console.log((<HTMLInputElement>document.getElementById("time2")).value)
+      
+      //DATE-TIME-SHENANIGANS
+      let currtime = (<HTMLInputElement>(document.getElementById("time"))).value;
+      console.log(currtime);
+      this.order.orderTime = new Date(new Date().toISOString().slice(0,10) + " " + currtime);
+      console.log(this.order.orderTime);
+      //DATE-TIME-SHENANIGANS
+
       
       this.order.userid = "user1";
       
@@ -216,8 +221,7 @@ export class AddorderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //(<HTMLInputElement>document.getElementById("myTime")).required = true;
-    //(<HTMLInputElement>document.getElementById("myTime")).min = "10:00:00";
+    //(<HTMLInputElement>(document.getElementById("time"))).value = new Date().toDateString();
 
     this.orderservice.getOrders().subscribe(data => {this.orders = data;
       for(let i = 0;i<this.orders.length;i++){
