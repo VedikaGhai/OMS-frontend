@@ -1,3 +1,13 @@
+<div fxLayout fxLayoutAlign="center center">
+  <div class="button-row">
+    <button mat-raised-button color="primary" (click)="onClickMe()">Randomize</button>
+    <button mat-raised-button color="primary">Transact</button>
+  </div>
+  <mat-form-field fxFlex="40%">
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter by Buy/Sell and Status">
+  </mat-form-field>
+</div>
+  
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef >ID</th>

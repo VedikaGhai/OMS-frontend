@@ -25,6 +25,8 @@ export interface Idata {
 })
 export class TableComponent implements AfterViewInit, OnInit {
   IsWait:boolean = true ;
+  clickMessage = '';
+  parentMessage = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   // @ViewChild(MatTable) table: MatTable<TableItem>;
@@ -32,7 +34,7 @@ export class TableComponent implements AfterViewInit, OnInit {
 
   displayedColumns = ['id','buyOrSell','orderTime','quantity','orderType','price','orderStatus'];
   dataSource = new MatTableDataSource<Idata>();
-
+  selected = 'NONE';
     constructor(
       private httpClient: HttpClient
     ) { }
@@ -53,4 +55,14 @@ export class TableComponent implements AfterViewInit, OnInit {
     // this.IsWait=false;
 
   }
+
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+  onClickMe() {
+    this.parentMessage = true;
+    window.location.reload();
+  }
+
 }

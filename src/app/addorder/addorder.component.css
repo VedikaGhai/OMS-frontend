@@ -40,14 +40,25 @@
 }
 
 .cardhead{
-   background: deeppink;
+   background: rgb(37, 44, 44);
    padding: 20px 55px 20px 55px; 
 }
 
 .cardcontent{
-   background: #80c64a;
+   background: rgb(250, 100, 0);
    padding: 20px 55px 20px 55px; 
 }
+
+.cardheadsell{
+   background: rgb(192, 59, 81);
+   padding: 20px 55px 20px 55px; 
+}
+
+.cardcontentsell{
+   background: rgb(231, 119, 156);
+   padding: 20px 55px 20px 55px; 
+}
+
 #HASH {
    display: flex;
    justify-content: space-between;
@@ -55,4 +66,8 @@
 /*new css*/
 .field__input{ 
    font-size:14pt;
+ }
+
+ b{
+   font-size: large;
  }

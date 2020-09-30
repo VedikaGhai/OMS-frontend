@@ -1,29 +1,61 @@
 
 <!--IMP-->
-<div style="width : 600px; float:right; margin-top: 50pt; margin-right: 120pt; border: 5px solid red;">
-  <mat-card class="my-card">
+<div style="width : 600px; float:right; margin-top: 45pt; margin-right: 120pt;">
+  <mat-card class="my-card" style="background-color: green;">
+    <h2>Everything you need to know before stepping into the market</h2>
     <p>
-      <b>LTP</b>
+      <b>LTP : </b>
+      LTP means the <strong>last traded price</strong> at which the market closed on the last working day.
     </p>
-    <p>PRICE</p>
-    <p>TIME</p>
-    <p>MARKET/LIMIT</p>
+    <p><b>PRICE : </b>
+      Your bid price should be within the price band which stands at 10% higher or lower than the LTP.
+      Minimum and Maximum allowed prices have been provided for your reference.
+      Also, you can only trade at prices which are multiples of <strong>0.05$</strong>.   
+    </p>
+    <p><b>TIME : </b>
+      We are considering the trade orders placed between <strong>10:00 A.M.</strong> and <strong>11:00 A.M.</strong> for any given day.
+      So kindly make sure that you place your orders within that window, otherwise your orders will be rejected.
+    </p>
+    <p><b>MARKET : </b>
+      If you choose to place a <strong>market</strong> order, we will try to execute your order with the best available order present in the market. You don't have to 
+      enter a bid price for placing a market order. 
+      <br>
+      However, by the time the market closes on that day, if we are unable to find a suitable trade for you, your order will be <strong>rejected</strong>.
+    </p>
+    <p><b>LIMIT : </b>
+      A <strong>limit</strong> order is like any normal order. You have to 
+      enter a bid price in compliance with the price rules mentioned above. 
+    </p>
+    <b>EXTRA CONDITIONS : </b>
+    <ul>
+      <li>
+        <strong>All or None: </strong>We will either execute the whole order or wait for a suitable trade.
+      </li>
+      <li>
+        <strong>Minimum Filled: </strong>We will keep executing orders with shares that exceeds your minimum filled limit.<u>Note:</u>Your minimum number of shares
+        to be filled cannot exceed your total quantity. 
+      </li>
+      <li>
+        <strong>No Extra Conditions: </strong>You can always opt for no extra conditions wherein your shares will be traded as and when a suitable trade offer is found.
+      </li>
+    </ul>
+    
   </mat-card>
 </div>
-<div *ngIf = "!slidervalue" style="width : 1000px; margin-left: 30pt; margin-top: 50pt; border : 5px solid red;">
+<div *ngIf = "!slidervalue" style="width : 1000px; margin-left: 30pt; margin-top: 50pt;">
     <mat-card class="my-card" style="margin-top: 50pt;">
 
       <div class = "cardhead">
         <div id="HASH">
-          <span><h1>BUY ORDER</h1></span>
+          <span><h1 style="color: rgb(250, 100, 0);">BUY ORDER</h1></span>
           <span>
-            <h2><fa-icon [icon]="ltpinfo" data-toggle="tooltip" title="Last Traded Price. Your bid should be in the LTP price band."></fa-icon>
+            <h2 style="color: rgb(250, 100, 0);"><fa-icon [icon]="ltpinfo" data-toggle="tooltip" title="Last Traded Price. Your bid should be in the LTP price band."></fa-icon>
             LTP : {{ltp}}</h2></span>
         </div>
       </div>
 
 
-          <mat-card-content>
+          <mat-card-content class="cardcontent">
             <form (ngSubmit) = "validate(buyorderform)" #buyorderform = "ngForm" class="my-form">
               <table style="width: 100%"  cellspacing="30">
                 <tr>
@@ -117,20 +149,18 @@
     
     
 
-    <div *ngIf = "slidervalue" style="width : 800px; margin: auto; ">
-    <mat-card  class="my-card sell">
-      <mat-card-header>
-        <div class="container">
-          <div>SELL ORDER</div>
-          <div class="fill"></div>
-          <div>
-            <fa-icon [icon]="ltpinfo" data-toggle="tooltip" title="Last Traded Price. Your bid should be in the LTP price band."></fa-icon>
-            <span>LTP : </span> <span>{{ltp}}</span>
-          </div>
-        </div>
-      </mat-card-header>
+    <div *ngIf = "slidervalue" style="width : 1000px; margin-left: 30pt; margin-top: 50pt;">
+    <mat-card  class="my-card" style="margin-top: 50pt;">
       
-          <mat-card-content>
+      <div class = "cardheadsell">
+        <div id="HASH">
+          <span><h1 style="color: rgb(63, 34, 39);">SELL ORDER</h1></span>
+          <span>
+            <h2 style="color:  rgb(63, 34, 39);"><fa-icon [icon]="ltpinfo" data-toggle="tooltip" title="Last Traded Price. Your bid should be in the LTP price band."></fa-icon>
+            LTP : {{ltp}}</h2></span>
+        </div>
+      </div>
+          <mat-card-content class="cardcontentsell">
             <form  (ngSubmit) = "validate(sellorderform)" #sellorderform = "ngForm" class="my-form">
               <table  style="width: 100%"  cellspacing="30">
                 <tr>
@@ -222,3 +252,4 @@
     </mat-card>
     </div>
     
+ 

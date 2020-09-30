@@ -1,10 +1,21 @@
 table {
-    width: 40%;
-    margin: 10px;
-  }
+  width: 80%;
+  margin: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
   
 .mat-paginator {
-    position: absolute;
-    text-align: center;
-    margin: 10px;
-  }
+  display: flex;
+  justify-content: center;
+}
+
+.button-row {
+  justify-content:center;
+  width: 450px;
+  margin-left : 20px;
+}
+
+.button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}

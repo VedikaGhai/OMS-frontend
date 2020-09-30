@@ -1,1 +1,12 @@
-/**/
+table {
+    width: 80%;
+    margin: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+.mat-paginator {
+  display: flex;
+  justify-content: center;
+
+  }
