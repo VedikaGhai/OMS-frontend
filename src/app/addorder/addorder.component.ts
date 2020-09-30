@@ -10,6 +10,7 @@ import { MarketSellErrorComponent } from '../market-sell-error/market-sell-error
 import { SubmissionComponent } from '../submission/submission.component';
 import { FormControl, Validators } from '@angular/forms';
 import { MinFillErrorComponent } from '../min-fill-error/min-fill-error.component';
+import { TimeComponentComponent } from '../time-component/time-component.component';
 
 @Component({
   selector: 'app-addorder',
@@ -39,6 +40,7 @@ export class AddorderComponent implements OnInit {
   issellavailable = false;
   
   f = 0;
+  t = 0;
 
 
   //rateControl = new FormControl("", [Validators.max(parseInt(this.order.quantity)), Validators.min(0)])
@@ -174,6 +176,26 @@ export class AddorderComponent implements OnInit {
       }
       //MIN-FILL VALIDATION-END
 
+      //DATE-TIME-SHENANIGANS
+      let currtime = (<HTMLInputElement>(document.getElementById("time"))).value;
+      if(currtime == "")
+      currtime = "00:00:00";
+      console.log(currtime);
+      let hrs = parseInt(currtime.substr(0,2));
+      let mins = parseInt(currtime.substr(3,2));
+      let secs = parseInt(currtime.substr(6,2));
+
+      if(hrs < 10 || hrs > 11){
+        this.t = 1;
+      }
+      else if(hrs == 11 && (mins || secs)){
+        this.t = 1;
+      }
+      console.log(this.t);
+      this.order.orderTime = new Date(new Date().toISOString().slice(0,10) + " " + currtime);
+      console.log(this.order.orderTime);
+      //DATE-TIME-SHENANIGANS
+
       if(this.f){
         this.order.orderStatus = "REJECTED";
         let dialogRef = this.dialog.open(PriceErrorComponent, {
@@ -184,25 +206,27 @@ export class AddorderComponent implements OnInit {
           console.log('The dialog was closed');
         });
       }
+      else if(this.t){
+        this.order.orderStatus = "REJECTED";
+        let dialogRef = this.dialog.open(TimeComponentComponent, {
+          width: '250px',
+        });
+  
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+        });
+      }
       else
       this.order.orderStatus = "PENDING";
-      
-      //DATE-TIME-SHENANIGANS
-      let currtime = (<HTMLInputElement>(document.getElementById("time"))).value;
-      console.log(currtime);
-      this.order.orderTime = new Date(new Date().toISOString().slice(0,10) + " " + currtime);
-      console.log(this.order.orderTime);
-      //DATE-TIME-SHENANIGANS
 
-      
       this.order.userid = "user1";
-      
       console.log(this.order);
       this.orderservice.addOrder(this.order)
       .subscribe(data => {
 
-        if(this.f){
+        if(this.f || this.t){
           this.f = 0;
+          this.t = 0;
           return;
         }
 

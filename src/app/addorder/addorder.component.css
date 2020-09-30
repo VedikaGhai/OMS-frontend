@@ -18,3 +18,41 @@
  .fill {
    flex: 1;
  }
+
+ .alert-danger {
+   background-color: #f44336; /* Red */
+}
+.alert-success {
+   background-color: #36f456;  
+} 
+.alert{
+   padding: 10px;
+   color: black;
+   margin-bottom: 5px;
+   text-align: left;
+}
+
+.background{
+  width: 100%;  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.cardhead{
+   background: violet;
+   padding: 20px 55px 20px 55px; 
+}
+
+.cardcontent{
+   background: #80c64a;
+   padding: 20px 55px 20px 55px; 
+}
+#HASH {
+   display: flex;
+   justify-content: space-between;
+ }
+/*new css*/
+.field__input{ 
+   font-size:14pt;
+ }
