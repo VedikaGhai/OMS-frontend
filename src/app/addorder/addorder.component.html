@@ -1,18 +1,27 @@
 
 <!--IMP-->
-<div *ngIf = "!slidervalue" style="width : 800px; margin: auto; ">
-    <mat-card class="my-card buy">
+<div style="width : 600px; float:right; margin-top: 50pt; margin-right: 120pt; border: 5px solid red;">
+  <mat-card class="my-card">
+    <p>
+      <b>LTP</b>
+    </p>
+    <p>PRICE</p>
+    <p>TIME</p>
+    <p>MARKET/LIMIT</p>
+  </mat-card>
+</div>
+<div *ngIf = "!slidervalue" style="width : 1000px; margin-left: 30pt; margin-top: 50pt; border : 5px solid red;">
+    <mat-card class="my-card" style="margin-top: 50pt;">
 
-      <mat-card-header>
-        <div class="container">
-          <div>BUY ORDER</div>
-          <div class="fill"></div>
-          <div>
-            <fa-icon [icon]="ltpinfo" data-toggle="tooltip" title="Last Traded Price. Your bid should be in the LTP price band."></fa-icon>
-            <span>LTP : </span> <span>{{ltp}}</span>
-          </div>
+      <div class = "cardhead">
+        <div id="HASH">
+          <span><h1>BUY ORDER</h1></span>
+          <span>
+            <h2><fa-icon [icon]="ltpinfo" data-toggle="tooltip" title="Last Traded Price. Your bid should be in the LTP price band."></fa-icon>
+            LTP : {{ltp}}</h2></span>
         </div>
-      </mat-card-header>
+      </div>
+
 
           <mat-card-content>
             <form (ngSubmit) = "validate(buyorderform)" #buyorderform = "ngForm" class="my-form">
