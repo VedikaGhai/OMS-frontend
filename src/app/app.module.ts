@@ -72,11 +72,6 @@ import { SignupCompleteComponent } from './signup-complete/signup-complete.compo
     MatSortModule,
     MatPaginatorModule,
     MyMaterialModule,
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
   ],
   providers: [],
   bootstrap: [AppComponent]
