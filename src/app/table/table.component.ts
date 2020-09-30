@@ -32,14 +32,14 @@ export class TableComponent implements AfterViewInit, OnInit {
 
   displayedColumns = ['id','buyOrSell','orderTime','quantity','orderType','price','orderStatus'];
   dataSource = new MatTableDataSource<Idata>();
-
+  selected = 'NONE';
     constructor(
       private httpClient: HttpClient
     ) { }
 
   ngOnInit() {
     // this.dataSource = new TableDataSource();
-    this.httpClient.get('http://localhost:8080/order')
+    this.httpClient.get('http://localhost:8080/orders')
         .subscribe((data: Idata[]) => {
           this.dataSource.data = data;
           console.log(data)
@@ -53,4 +53,13 @@ export class TableComponent implements AfterViewInit, OnInit {
     // this.IsWait=false;
 
   }
+
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+  // onClickMe(selected: string) {
+  //   console.log(this.selected)
+  // }
+
 }
