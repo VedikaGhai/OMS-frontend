@@ -61,24 +61,21 @@
                   <!-- SIGN UP -->
                     
                         <br><br>
-                      <form #UserForm="ngForm" novalidate>
+                      <!--<form #UserForm="ngForm" novalidate>-->
                         <mat-form-field>
                          <!-- <input matInput placeholder="Enter your UserName" [formControl]="userNameSignUp" required>-->
-                          <input matInput placeholder="Enter your UserName" required>
-                          <mat-error *ngIf="userNameSignUp.invalid">{{getErrorMessage()}}</mat-error>
-                          </mat-form-field>
+                          <input matInput placeholder="Enter your UserName" required [(ngModel)]="username">
+                        </mat-form-field>
                           <mat-form-field>
                            <!-- <input matInput placeholder="Enter your Email" [formControl]="emailSignUp" required>-->
-                            <input matInput placeholder="Enter your Email" required>
-                            <mat-error *ngIf="emailSignUp.invalid">{{getErrorMessage()}}</mat-error>
+                            <input matInput placeholder="Enter your Email" required [(ngModel)]="emailId">
                           </mat-form-field>
                         <mat-form-field>
                           <!--<input matInput placeholder="Enter your Passsword" [formControl]="passwordSignUp" required>-->
-                          <input matInput placeholder="Enter your Passsword" required>
-                          <mat-error *ngIf="passwordSignUp.invalid">{{getErrorMessage()}}</mat-error>
+                          <input matInput placeholder="Enter your Passsword" required [(ngModel)]="password">
                         </mat-form-field><br><br>
                         <button mat-raised-button color="primary" (click) = "createUser()" > SIGNUP </button>
-                        </form>
+                        <!--</form>-->
                         
                       
                     

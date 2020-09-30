@@ -33,6 +33,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 //new
 import { AddorderComponent } from './addorder/addorder.component';
 import { LoginErrorComponent } from './login-error/login-error.component';
+import { SignupCompleteComponent } from './signup-complete/signup-complete.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { LoginErrorComponent } from './login-error/login-error.component';
     LogoutComponent,
     TableComponent,
     AddorderComponent,
-    LoginErrorComponent
+    LoginErrorComponent,
+    SignupCompleteComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

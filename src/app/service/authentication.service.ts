@@ -20,6 +20,10 @@ export class AuthenticationService {
     return this.httpClient.post<User>("http://localhost:8080/authenticate", user);
   }
 
+  createUser(user: User){
+    return this.httpClient.post<User>("http://localhost:8080/user", user);
+  }
+
   isUserLoggedIn() {
     let user = sessionStorage.getItem('authenticationStatus')
     console.log(!(user === null))

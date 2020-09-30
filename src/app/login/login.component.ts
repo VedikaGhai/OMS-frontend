@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, NgForm} from '@angular/forms';
+import {FormControl, Validators, NgForm, Form} from '@angular/forms';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { AuthenticationService, User } from '../service/authentication.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginErrorComponent } from '../login-error/login-error.component';
+import { SignupCompleteComponent } from '../signup-complete/signup-complete.component';
 
 @Component({
   selector: 'app-login',
@@ -87,6 +88,8 @@ export class LoginComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
           console.log('The dialog was closed');
         });
+        this.username="";
+        this.password="";
       }
     
     });
@@ -116,8 +119,32 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  /*
+  createUser(userForm: NgForm){
+    console.log(JSON.stringify(userForm.value));
+  }*/
+
   createUser(){
-    
+    this.user.username = this.username;
+    this.user.pass_word = this.password;
+    this.user.email_id = this.emailId;
+    console.log(this.user);
+    this.authentication.createUser(this.user).subscribe(res => {
+      console.log(res)
+      if(res!=null){
+        let dialogRef = this.dialog.open(SignupCompleteComponent, {
+          width: '250px',
+        });
+  
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+        });
+        this.username="";
+        this.password="";
+        this.emailId="";
+      }
+    });
+
   }
 
 }
