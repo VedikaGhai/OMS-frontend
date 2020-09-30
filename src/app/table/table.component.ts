@@ -39,7 +39,7 @@ export class TableComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     // this.dataSource = new TableDataSource();
-    this.httpClient.get('http://localhost:8080/orders')
+    this.httpClient.get('http://localhost:8080/order')
         .subscribe((data: Idata[]) => {
           this.dataSource.data = data;
           console.log(data)
