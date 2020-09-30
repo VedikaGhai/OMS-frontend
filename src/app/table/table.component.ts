@@ -25,6 +25,8 @@ export interface Idata {
 })
 export class TableComponent implements AfterViewInit, OnInit {
   IsWait:boolean = true ;
+  clickMessage = '';
+  parentMessage = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   // @ViewChild(MatTable) table: MatTable<TableItem>;
@@ -58,8 +60,15 @@ export class TableComponent implements AfterViewInit, OnInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
+<<<<<<< Updated upstream
   // onClickMe(selected: string) {
   //   console.log(this.selected)
   // }
+=======
+  onClickMe() {
+    this.parentMessage = true;
+    window.location.reload();
+  }
+>>>>>>> Stashed changes
 
 }

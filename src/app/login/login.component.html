@@ -13,7 +13,7 @@
                   <br><br>
                   <mat-form-field>
                     <!--<input matInput placeholder="Enter your email" [formControl]="emailLogin" required>-->
-                    <input matInput placeholder="Enter your email"  required [(ngModel)]="username">
+                    <input matInput placeholder="Enter Username"  required [(ngModel)]="username">
                     
                     <!-- If email is not according to the valid format -->
                     <mat-error *ngIf="emailLogin.invalid">{{getErrorMessage()}}</mat-error>             
@@ -23,7 +23,7 @@
                 
                     <mat-form-field>
                     <!--<input matInput placeholder="Enter your Password" [formControl]="passwordLogin" required type="password">-->
-                    <input matInput placeholder="Enter your Password" required type="password" [(ngModel)]="password">
+                    <input matInput placeholder="Enter Password" required type="password" [(ngModel)]="password">
                     <mat-error *ngIf="passwordLogin.invalid">{{getErrorMessage()}}</mat-error>
                   </mat-form-field><br><br>
                   <!--<mat-checkbox>Remember Me</mat-checkbox>-->
@@ -64,15 +64,15 @@
                       <!--<form #UserForm="ngForm" novalidate>-->
                         <mat-form-field>
                          <!-- <input matInput placeholder="Enter your UserName" [formControl]="userNameSignUp" required>-->
-                          <input matInput placeholder="Enter your UserName" required [(ngModel)]="username">
+                          <input matInput placeholder="Enter Username" required [(ngModel)]="username">
                         </mat-form-field>
                           <mat-form-field>
                            <!-- <input matInput placeholder="Enter your Email" [formControl]="emailSignUp" required>-->
-                            <input matInput placeholder="Enter your Email" required [(ngModel)]="emailId">
+                            <input matInput placeholder="Enter Email ID" required [(ngModel)]="emailId">
                           </mat-form-field>
                         <mat-form-field>
                           <!--<input matInput placeholder="Enter your Passsword" [formControl]="passwordSignUp" required>-->
-                          <input matInput placeholder="Enter your Passsword" required [(ngModel)]="password">
+                          <input matInput type="password" placeholder="Passsword" required [(ngModel)]="password">
                         </mat-form-field><br><br>
                         <button mat-raised-button color="primary" (click) = "createUser()" > SIGNUP </button>
                         <!--</form>-->

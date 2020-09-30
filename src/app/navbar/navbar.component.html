@@ -1,8 +1,8 @@
 <mat-toolbar color="primary"  class="mat-elevation-z4" *ngIf="authentication.isUserLoggedIn()">
     <span><mat-icon>trending_up</mat-icon>Order Matching System</span>
     <div class="spacer"></div>
-    <a mat-button  routerLink="orderbook">Home</a>
-    <a mat-button  routerLink="addorder">Place Order</a>
-    <a mat-button  routerLink="trades">Trades</a>
+    <a mat-button  routerLink="orderbook" routerLinkActive="active">Home</a>
+    <a mat-button  routerLink="addorder" routerLinkActive="active">Place Order</a>
+    <a mat-button  routerLink="trades" routerLinkActive="active">Trades</a>
     <a mat-raised-button color="accent" routerLink="logout">Signout</a>
 </mat-toolbar>
