@@ -216,8 +216,10 @@ export class AddorderComponent implements OnInit {
           console.log('The dialog was closed');
         });
       }
-      else
-      this.order.orderStatus = "PENDING";
+      else{
+      //this.order.orderStatus = "PENDING";
+      this.order.orderStatus = "EXECUTED";
+      }
 
       this.order.userid = "user1";
       console.log(this.order);

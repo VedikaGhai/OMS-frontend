@@ -5,6 +5,7 @@ import { MatTable } from '@angular/material/table';
 // import { TableDataSource, TableItem } from './table-datasource';
 import { MatTableDataSource} from '@angular/material/table';
 import { HttpClient } from '@angular/common/http';
+import {faExclamationTriangle, faCheckCircle, faSpinner, faCog} from '@fortawesome/free-solid-svg-icons';
 
 export interface Idata {
     id: number;
@@ -35,6 +36,12 @@ export class TableComponent implements AfterViewInit, OnInit {
   displayedColumns = ['id','buyOrSell','orderTime','quantity','orderType','price','orderStatus'];
   dataSource = new MatTableDataSource<Idata>();
   selected = 'NONE';
+
+  //new changes
+  farejected = faExclamationTriangle;
+  faaccepted = faCheckCircle;
+  fapending = faCog;
+
     constructor(
       private httpClient: HttpClient
     ) { }

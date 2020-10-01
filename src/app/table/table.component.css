@@ -19,3 +19,15 @@ table {
 .button-row .mat-button-base {
   margin: 8px 8px 8px 0;
 }
+
+.rejected{
+  color: red;
+}
+
+.pending{
+  color : blue
+}
+
+.executed{
+  color : green;
+}
