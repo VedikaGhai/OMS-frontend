@@ -38,7 +38,7 @@ export class AddorderComponent implements OnInit {
   quantityinfo = faInfoCircle;
   isbuyavailable = false;
   issellavailable = false;
-  
+  curr;
   f = 0;
   t = 0;
 

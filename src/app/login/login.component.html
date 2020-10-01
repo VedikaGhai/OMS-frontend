@@ -69,7 +69,7 @@
                         </mat-form-field>
                           <mat-form-field>
                            <!-- <input matInput placeholder="Enter your Email" [formControl]="emailSignUp" required>-->
-                            <input matInput pattern = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" placeholder="Enter Email ID" required [(ngModel)]="emailId" #mailref = "ngModel">
+                            <input matInput pattern = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9.-]+$" placeholder="Enter Email ID" required [(ngModel)]="emailId" #mailref = "ngModel">
                           </mat-form-field>
                         <mat-form-field>
                           <!--<input matInput placeholder="Enter your Passsword" [formControl]="passwordSignUp" required>-->
@@ -78,7 +78,7 @@
                         <button mat-raised-button color="primary"  [disabled] = "(!(passref.valid && userref.valid && mailref.valid))" (click) = "createUser()" > SIGNUP </button>
                         
                         
-                      
+                        <!-- ^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$ , ^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$ -->
                     
                 </mat-tab>
                 <!-- END OF SIGN UP -->

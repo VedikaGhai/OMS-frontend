@@ -54,9 +54,9 @@
       <!-- FORM HEADER-->
       <div class = "cardhead">
         <div id="HASH">
-          <span><h1 style="color:#0d1137">BUY ORDER</h1></span>
+          <span><h1 style="color:rgba(235, 226, 226, 0.822)">BUY ORDER</h1></span>
           <span>
-            <h2 style="color: #0d1137"><fa-icon [icon]="ltpinfo" data-toggle="tooltip" title="Last Traded Price. Your bid should be in the LTP price band."></fa-icon>
+            <h2 style="color: rgba(235, 226, 226, 0.822);"><fa-icon [icon]="ltpinfo" data-toggle="tooltip" title="Last Traded Price. Your bid should be in the LTP price band."></fa-icon>
             LTP : {{ltp}}</h2></span>
         </div>
       </div>
@@ -108,14 +108,13 @@
                           <mat-option value="None">None</mat-option>
                           <mat-option value="All or None">All or None</mat-option>
                           <mat-option value="Minimum Filled">Minimum Filled</mat-option>
-                          <mat-option value="Disclosed Quantity">Disclosed Quantity</mat-option>
                       </mat-select>
                   </mat-form-field>
                   </td>
 
                   <td>
                     <mat-form-field>
-                      <input matInput type="time" placeholder="Time of order" id="time" step = "1" value="curr">
+                      <input matInput type="time" placeholder="Time of order" id="time" step = "1" value="curr" [(ngModel)] = "curr" #timeref = "ngModel">
                       <!--<input type="time" id="time2" step = "1"/>-->
                     </mat-form-field> 
                   </td>
@@ -137,7 +136,7 @@
 
                 <tr>
                   <td>
-                    <button  mat-raised-button color="primary" [disabled] = "!buyorderform.form.valid">Confirm Order</button>
+                    <button  mat-raised-button color="primary" [disabled] = "!(buyorderform.form.valid && timeref.valid)">Confirm Order</button>
                   </td>
 
                   <td>
@@ -165,9 +164,9 @@
       
       <div class = "cardheadsell">
         <div id="HASH">
-          <span><h1 style="color: #1e2761;">SELL ORDER</h1></span>
+          <span><h1 style="color:#417bbd;">SELL ORDER</h1></span>
           <span>
-            <h2 style="color: #1e2761;"><fa-icon [icon]="ltpinfo" data-toggle="tooltip" title="Last Traded Price. Your bid should be in the LTP price band."></fa-icon>
+            <h2 style="color: #417bbd;"><fa-icon [icon]="ltpinfo" data-toggle="tooltip" title="Last Traded Price. Your bid should be in the LTP price band."></fa-icon>
             LTP : {{ltp}}</h2></span>
         </div>
       </div>
@@ -215,7 +214,6 @@
                           <mat-option value="None">None</mat-option>
                           <mat-option value="All or None">All or None</mat-option>
                           <mat-option value="Minimum Filled">Minimum Filled</mat-option>
-                          <mat-option value="Disclosed Quantity">Disclosed Quantity</mat-option>
                       </mat-select>
                   </mat-form-field>
                  </td>

@@ -40,17 +40,17 @@
 }
 
 .cardhead{
-   background: #e52165;
+   background: #45aece;
    padding: 20px 55px 20px 55px; 
 }
 
 .cardcontent{
-   background : #d47798;
+   background :rgba(235, 226, 226, 0.822);
    padding: 20px 55px 20px 55px; 
 }
 
 .cardheadsell{
-   background:#d9a5b3;
+   background:#ee96ae;
    padding: 20px 55px 20px 55px; 
 }
 
