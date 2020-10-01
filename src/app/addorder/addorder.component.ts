@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import {Order, OrderService} from '../service/order.service'
+import { Order, OrderService} from '../service/order.service'
 
 import { faCoffee, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,6 +11,7 @@ import { SubmissionComponent } from '../submission/submission.component';
 import { FormControl, Validators } from '@angular/forms';
 import { MinFillErrorComponent } from '../min-fill-error/min-fill-error.component';
 import { TimeComponentComponent } from '../time-component/time-component.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-addorder',
@@ -21,6 +22,7 @@ export class AddorderComponent implements OnInit {
   order:Order = new Order("","",new Date(),"","","","","0","","");
   orders : Order[];
   
+
   pbuy = false;
   psell = false;
   slidervalue = false;
@@ -29,9 +31,7 @@ export class AddorderComponent implements OnInit {
   buycategory = true;
   sellcategory = true;
   validprice = true;
-  ltp = 30;
-  maxlimit = this.ltp + this.ltp/10;
-  minlimit = this.ltp - this.ltp/10;
+  
   faCoffee = faCoffee;
   ltpinfo = faInfoCircle;
   priceinfo = faInfoCircle;
@@ -42,6 +42,9 @@ export class AddorderComponent implements OnInit {
   f = 0;
   t = 0;
 
+  ltp = 45
+  maxlimit = (this.ltp + this.ltp/10).toFixed(2);
+  minlimit = (this.ltp - this.ltp/10).toFixed(2);
 
   //rateControl = new FormControl("", [Validators.max(parseInt(this.order.quantity)), Validators.min(0)])
   //val = 0;
@@ -60,6 +63,7 @@ export class AddorderComponent implements OnInit {
   disablebuyprice(){
     this.pbuy = true;
     this.order.price = "";
+    this.buyoption = "None"
   }
 
   enablesellprice(){
@@ -69,6 +73,7 @@ export class AddorderComponent implements OnInit {
   disablesellprice(){
     this.psell = true;
     this.order.price = "";
+    this.buyoption = "None"
   }
 
   buytoggle(){
@@ -99,7 +104,7 @@ export class AddorderComponent implements OnInit {
     if(len >= 3 && val[len-3] == '.' && val[len-1] != '5' && val[len-1] != '0'){
       this.f = 1;
     }
-    else if(parseFloat(val) < this.minlimit || parseFloat(val) > this.maxlimit){
+    else if(parseFloat(val) < parseFloat(this.minlimit) || parseFloat(val) > parseFloat(this.maxlimit)){
       this.f = 1;
     }
     //PRICE-VALIDATION-END
@@ -124,6 +129,7 @@ export class AddorderComponent implements OnInit {
         }
         else if(this.selloption == "None"){
           this.order.minFill = "0";
+          this.order.allOrNone = "0";
         }
         this.order.buyOrSell = "SELL";
         if(!this.psell)
@@ -153,6 +159,7 @@ export class AddorderComponent implements OnInit {
         }
         else if(this.buyoption == "None"){    
            this.order.minFill = "0";
+           this.order.allOrNone = "0";
         }
         this.order.buyOrSell = "BUY";
         if(!this.pbuy)
@@ -217,8 +224,8 @@ export class AddorderComponent implements OnInit {
         });
       }
       else{
-      //this.order.orderStatus = "PENDING";
-      this.order.orderStatus = "EXECUTED";
+      this.order.orderStatus = "PENDING";
+      //this.order.orderStatus = "EXECUTED";
       }
 
       this.order.userid = "user1";
@@ -249,7 +256,7 @@ export class AddorderComponent implements OnInit {
 
     //(<HTMLInputElement>(document.getElementById("time"))).value = new Date().toDateString();
 
-    this.orderservice.getOrders().subscribe(data => {this.orders = data;
+    /*this.orderservice.getOrders().subscribe(data => {this.orders = data;
       for(let i = 0;i<this.orders.length;i++){
         if(this.orders[i].buyOrSell == "SELL" && this.orders[i].orderType == "LIMIT")
           this.isbuyavailable = true;
@@ -258,7 +265,7 @@ export class AddorderComponent implements OnInit {
         if(this.isbuyavailable && this.issellavailable)
         break;
       }
-    });
+    });*/
     //console.log(typeof(this.orders));
     //this.orders.forEach(data => console.log("allo sir"));
   }

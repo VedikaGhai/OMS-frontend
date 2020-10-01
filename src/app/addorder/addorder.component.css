@@ -40,22 +40,22 @@
 }
 
 .cardhead{
-   background: rgb(37, 44, 44);
+   background: #e52165;
    padding: 20px 55px 20px 55px; 
 }
 
 .cardcontent{
-   background: rgb(250, 100, 0);
+   background : #d47798;
    padding: 20px 55px 20px 55px; 
 }
 
 .cardheadsell{
-   background: rgb(192, 59, 81);
+   background:#d9a5b3;
    padding: 20px 55px 20px 55px; 
 }
 
 .cardcontentsell{
-   background: rgb(231, 119, 156);
+   background:#c6d7eb;
    padding: 20px 55px 20px 55px; 
 }
 
