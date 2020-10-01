@@ -6,6 +6,7 @@
             <div mat-card-avatar class="example-header-image"></div>
             
           </mat-card-header>
+          
             <mat-tab-group>
                 <mat-tab label="Login">
                   <!-- LOGIN -->
@@ -61,21 +62,21 @@
                   <!-- SIGN UP -->
                     
                         <br><br>
-                      <!--<form #UserForm="ngForm" novalidate>-->
+                      
                         <mat-form-field>
                          <!-- <input matInput placeholder="Enter your UserName" [formControl]="userNameSignUp" required>-->
-                          <input matInput placeholder="Enter Username" required [(ngModel)]="username">
+                          <input matInput placeholder="Enter Username" required [(ngModel)]="username" #userref = "ngModel">
                         </mat-form-field>
                           <mat-form-field>
                            <!-- <input matInput placeholder="Enter your Email" [formControl]="emailSignUp" required>-->
-                            <input matInput placeholder="Enter Email ID" required [(ngModel)]="emailId">
+                            <input matInput pattern = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" placeholder="Enter Email ID" required [(ngModel)]="emailId" #mailref = "ngModel">
                           </mat-form-field>
                         <mat-form-field>
                           <!--<input matInput placeholder="Enter your Passsword" [formControl]="passwordSignUp" required>-->
-                          <input matInput type="password" placeholder="Passsword" required [(ngModel)]="password">
+                          <input matInput type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Passsword" required [(ngModel)]="password" #passref = "ngModel">
                         </mat-form-field><br><br>
-                        <button mat-raised-button color="primary" (click) = "createUser()" > SIGNUP </button>
-                        <!--</form>-->
+                        <button mat-raised-button color="primary"  [disabled] = "(!(passref.valid && userref.valid && mailref.valid))" (click) = "createUser()" > SIGNUP </button>
+                        
                         
                       
                     
@@ -83,6 +84,7 @@
                 <!-- END OF SIGN UP -->
                 
             </mat-tab-group>
+          
               <br><br>
       
       
